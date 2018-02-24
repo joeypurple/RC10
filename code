@@ -28,12 +28,12 @@ class Pulldown:
     # Function to Compare Saved to Current URL data
     def compare(self):
         if self.saved_file.readlines() == self.current_file.readlines():
-            print("A is equal to B")
+            print("No changes found on RC10.com")
             main.current_url()
-            main.email()
             main.compare()
         else:
-            print("A is not equal to B")
+            print("Update made to RC10.com")
+            main.email()
             main.current_url()
             main.compare()
 
@@ -64,5 +64,3 @@ if __name__ == "__main__":
     main.saved_url()
     main.current_url()
     main.compare()
-
-
