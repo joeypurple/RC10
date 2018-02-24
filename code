@@ -1,0 +1,15 @@
+import urllib.request
+
+#Class to pulldown and save HTML as text file
+class Pulldown:
+    #Constructor to read hardcoded URL
+    def __init__(self):
+        self.site = urllib.request.urlopen("https://www.teamassociated.com/cars_and_trucks/RC10B6.1/Team/manuals_setups/")
+        self.website = self.site.read()
+    #function to save URL as a text file to compare later
+    def saveurl(self):
+        print (self.website)
+
+if __name__ == "__main__":
+        pd = Pulldown()
+        pd.saveurl()
