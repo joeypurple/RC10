@@ -1,25 +1,44 @@
 import urllib.request
+import time
 
 #Class to pulldown and save HTML as text file
 class Pulldown:
-    #Constructor to save hardcoded URL
-    def __init__(self):
-        self.url_file, headers = urllib.request.urlretrieve\
+
+    # Current URL data
+    def current_url(self):
+        time.sleep(3)
+        self.url_current, headers = urllib.request.urlretrieve \
             ('https://www.teamassociated.com/cars_and_trucks/RC10B6.1/Team/manuals_setups/')
-    #Compare saved URL data to current URL data
-    def compare_file(self):
-        saved_url = open(self.url_file, "r")
-        saved_url_print = saved_url.readlines()
-        saved_url_file = open('C://Users//Joe//Desktop//blank.txt', "r+")
-        saved_url_file.write(str(saved_url_print))
-        if saved_url_file == saved_url_file:
-             print("A is equal to B")
-        else :
-             print ("A is not equal to B")
-        #print (a.readlines(500))
-        #print (b.readlines(500))
+        self.current = open(self.url_current, "r")
+        self.current_print = self.current.readlines()
+        self.current_file = open('C://Users//Joe//Desktop//current.txt', "r+")
+        self.current_file.write(str(self.current_print))
+
+    # Saved URL data
+    def saved_url(self):
+        self.url_saved, headers = urllib.request.urlretrieve \
+            ('https://www.teamassociated.com/cars_and_trucks/RC10B6.1/Team/manuals_setups/')
+        self.saved = open(self.url_saved, "r")
+        self.saved_print = self.saved.readlines()
+        self.saved_file = open('C://Users//Joe//Desktop//saved.txt', "r+")
+        self.saved_file.write(str(self.saved_print))
+
+    # Function to Compare Saved to Current URL data
+    def compare(self):
+        if self.saved_file.readlines() == self.current_file.readlines():
+            print("A is equal to B")
+            self.current_file.close()
+            self.saved_file.close()
+        else:
+            print("A is not equal to B")
+            self.current_file.close()
+            self.saved_file.close()
 
 #Run the functions
 if __name__ == "__main__":
     main = Pulldown()
-    main.compare_file()
+    main.saved_url()
+    main.current_url()
+    main.compare()
+
+
