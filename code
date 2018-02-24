@@ -10,6 +10,7 @@ class Pulldown:
     def saveurl(self):
         print (self.website)
 
+#Run the functions
 if __name__ == "__main__":
         pd = Pulldown()
         pd.saveurl()
