@@ -1,5 +1,4 @@
 import urllib.request
-import os
 
 #Class to pulldown and save HTML as text file
 class Pulldown:
@@ -10,9 +9,13 @@ class Pulldown:
     #Compare two files(A to B)
     def compare_file(self):
         a = open(self.url_file, "r")
-        b = open('C://Users//Joe//Desktop//index.html', "r")
-        print (a.readlines(500))
-        print (b.readlines(500))
+        b = open('C://Users//Joe//AppData//Local//Temp//wct357E.tmp', "r")
+        if a.readlines(500) == b.readlines(500):
+             print("A is equal to B")
+        else :
+             print ("A is not equal to B")
+        #print (a.readlines(500))
+        #print (b.readlines(500))
 
 #Run the functions
 if __name__ == "__main__":
