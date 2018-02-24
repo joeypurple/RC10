@@ -6,11 +6,13 @@ class Pulldown:
     def __init__(self):
         self.url_file, headers = urllib.request.urlretrieve\
             ('https://www.teamassociated.com/cars_and_trucks/RC10B6.1/Team/manuals_setups/')
-    #Compare two files(A to B)
+    #Compare saved URL data to current URL data
     def compare_file(self):
-        a = open(self.url_file, "r")
-        b = open('C://Users//Joe//AppData//Local//Temp//wct357E.tmp', "r")
-        if a.readlines(500) == b.readlines(500):
+        saved_url = open(self.url_file, "r")
+        saved_url_print = saved_url.readlines()
+        saved_url_file = open('C://Users//Joe//Desktop//blank.txt', "r+")
+        saved_url_file.write(str(saved_url_print))
+        if saved_url_file == saved_url_file:
              print("A is equal to B")
         else :
              print ("A is not equal to B")
