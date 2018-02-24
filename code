@@ -39,7 +39,7 @@ class Pulldown:
 
     #Email alert
     def email(self):
-        to = "jottofar@gmail.com"
+        to = ""
         subject = "Changes made to RC10.com!!!"
         text = "Joe go check out RC10.com"
         gmail_sender = ''
