@@ -1,4 +1,5 @@
 import urllib.request
+import os
 
 #Class to pulldown and save HTML as text file
 class Pulldown:
@@ -6,7 +7,14 @@ class Pulldown:
     def __init__(self):
         self.url_file, headers = urllib.request.urlretrieve\
             ('https://www.teamassociated.com/cars_and_trucks/RC10B6.1/Team/manuals_setups/')
-        
+    #Compare two files(A to B)
+    def compare_file(self):
+        a = open(self.url_file, "r")
+        b = open('C://Users//Joe//Desktop//index.html', "r")
+        print (a.readlines(500))
+        print (b.readlines(500))
+
 #Run the functions
 if __name__ == "__main__":
     main = Pulldown()
+    main.compare_file()
