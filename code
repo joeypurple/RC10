@@ -1,12 +1,14 @@
 import urllib.request
 import time
+import smtplib as email
+from email.mime.text import MIMEText
 
 #Class to pulldown and save HTML as text file
 class Pulldown:
 
     # Current URL data
     def current_url(self):
-        time.sleep(3)
+        time.sleep(3600)
         self.url_current, headers = urllib.request.urlretrieve \
             ('https://www.teamassociated.com/cars_and_trucks/RC10B6.1/Team/manuals_setups/')
         self.current = open(self.url_current, "r")
@@ -27,12 +29,34 @@ class Pulldown:
     def compare(self):
         if self.saved_file.readlines() == self.current_file.readlines():
             print("A is equal to B")
-            self.current_file.close()
-            self.saved_file.close()
+            main.current_url()
+            main.email()
+            main.compare()
         else:
             print("A is not equal to B")
-            self.current_file.close()
-            self.saved_file.close()
+            main.current_url()
+            main.compare()
+
+    #Email alert
+    def email(self):
+        to = "jottofar@gmail.com"
+        subject = "Changes made to RC10.com!!!"
+        text = "Joe go check out RC10.com"
+        gmail_sender = ''
+        gmail_passwd = ''
+        server = email.SMTP('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.ehlo()
+        server.login(gmail_sender, gmail_passwd)
+        body= '\r\n'.join(['To: %s' % to, "From: %s" % gmail_sender,
+                            "Subject: %s" % subject,'', text])
+        try:
+            server.sendmail(gmail_sender, [to], body)
+            print ('email sent')
+        except:
+            print ('error sending email')
+        server.quit()
 
 #Run the functions
 if __name__ == "__main__":
